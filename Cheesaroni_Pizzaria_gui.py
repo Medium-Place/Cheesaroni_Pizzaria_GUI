@@ -8,7 +8,7 @@ Assignment: Final Project """
 import tkinter as tk
 from tkinter import messagebox
 
-
+"""This is creating the main window that pops up when the application first starts """
 class PizzaApp:
     def __init__(self, root):
         self.root = root
@@ -44,14 +44,14 @@ class PizzaApp:
         self.order_form = OrderForm(self.root)
 
     def view_existing_orders(self):
-        # Simulate viewing existing orders (will be expanded with actual order history logic)
+        # Simulate viewing existing orders
         messagebox.showinfo("Existing Orders", "Here is a list of your previous orders.")
 
     def quit_app(self):
         # Quit the application
         self.root.quit()
 
-
+# Order form with a seperate window so that the customer can customize their order
 class OrderForm:
     def __init__(self, parent):
         self.parent = parent
@@ -59,8 +59,8 @@ class OrderForm:
         self.new_order_window.title("New Order Form")
         self.new_order_window.geometry("500x500")
 
-        self.pizzas = []  # List to hold pizza selections
-        self.sides = []  # List to hold side selections
+        self.pizzas = []
+        self.sides = []
 
         self.create_order_form()
 
@@ -155,7 +155,7 @@ class OrderForm:
         self.checkout_win = CheckoutWindow(self.parent, self.pizzas, self.sides)
         self.new_order_window.destroy()
 
-
+# Window for the user to be able to add side dishes to their order
 class SideSelectionWindow:
     def __init__(self, parent, order_form):
         self.parent = parent
@@ -192,7 +192,7 @@ class SideSelectionWindow:
         self.checkout_win = CheckoutWindow(self.parent, self.order_form.pizzas, self.order_form.sides)
         self.side_window.destroy()
 
-
+# Checkout window so the user can input their information for payment and delivery 
 class CheckoutWindow:
     def __init__(self, parent, pizzas, sides=None):
         self.parent = parent
@@ -242,7 +242,7 @@ class CheckoutWindow:
         self.modify_order_button.pack(pady=5)
 
     def place_order(self):
-        # Place the order (in a real app, this would involve backend integration)
+        # Place the order (in a real app, this would involve backend integration, but alas, this is not that)
         self.checkout_win.destroy()
         self.show_confirmation_window()
 
